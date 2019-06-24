@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'Routes.dart';
 
 
-class SimpleWidget extends StatefulWidget {
-  @override
-  SimpleWidgetState createState() => SimpleWidgetState();
-}
-
-class SimpleWidgetState extends State<SimpleWidget> {
+class SimpleWidgetState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(

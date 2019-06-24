@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Grid.dart';
 import 'SimpleWidget.dart';
+import 'GridCell.dart';
 
 
 class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
@@ -9,6 +10,7 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
     tabController = TabController(length: 2, vsync: this);
   }
 
@@ -26,7 +28,9 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
       Tab(
         icon: Icon(Icons.settings_power),
       ),
-    ], controller: tabController);
+      ],
+      controller: tabController
+    );
   }
 
   TabBarView makeTabBarView(tabs) {
@@ -38,6 +42,15 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> grids = [];
+
+    grids.add(TheGridViewWidgetState("Home", Icons.home));
+    grids.add(TheGridViewWidgetState("Star Wars", Icons.star));
+    grids.add(TheGridViewWidgetState("Chat", Icons.chat_bubble));
+    grids.add(TheGridViewWidgetState("News", Icons.new_releases));
+    grids.add(TheGridViewWidgetState("Network", Icons.network_wifi));
+    grids.add(TheGridViewWidgetState("Options", Icons.settings));
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -46,7 +59,7 @@ class MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
           bottom: makeTabBar(),
         ),
         body: makeTabBarView(<Widget>[
-          TheGridViewWidgetState(), SimpleWidget()
+          GridViewWidgetState(grids), SimpleWidgetState()
         ]),
       ),
     );
